@@ -101,6 +101,7 @@ export default function Calculateing() {
           {status}<br></br>
           {bmiResult}<br></br>
         </Typography>
+
         )}
       </Sheet>
     </main>
