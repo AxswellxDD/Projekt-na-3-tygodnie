@@ -1,10 +1,11 @@
-import BmiForm from './commponents/BMI-form'
+import BmiForm from './commponents/BMI-form-America'
+import Bmi from './commponents/BMI'
 
 function App() {
   return (
-    <BmiForm>
+    <Bmi>
 
-    </BmiForm>
+    </Bmi>
   );
 }
 

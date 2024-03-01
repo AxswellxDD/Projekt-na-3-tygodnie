@@ -7,28 +7,27 @@ import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
-import BmiGender from './BMI-gender.jsx';
 
 
-export default function Calculateing() {
+export default function CalculateingAm() {
+
+    const [heightInches, setHeightInches] = useState("");
+    const [weightLbs, setWeightLbs] = useState("");
+    const [bmiResultAm, setBmiResult] = useState(null);
+    const [statusAm, setStatus] = useState("");
 
 
-    const [height, setHeight] = useState("");
-    const [weight, setWeight] = useState("");
-    const [bmiResult, setBmiResult] = useState(null);
-    const [status, setStatus] = useState("");
-
-
-  const CalculateBmi = () => {
-    let bmiResult = (weight / (height / 100) ** 2).toFixed(2);
-    setBmiResult(bmiResult);
-    let status = getStatus(bmiResult);
-    setStatus(status);
-    setWeight('');
-    setHeight('');
+  const CalculateBmiAm = () => {
+    let bmiResultAm = (weightLbs / (heightInches ** 2) * 703).toFixed(2);
+    setBmiResult(bmiResultAm);
+    let statusAm = getStatusAm(bmiResultAm);
+    setStatus(statusAm);
+    setWeightLbs('');
+    setHeightInches('');
+    console.log(bmiResultAm)
   }
 
-  function getStatus(bmi) {
+  function getStatusAm(bmi) {
     if (bmi < 18.5) return "Underweight";
     else if (bmi >= 18.5 && bmi < 24.9) return "Normal";
     else if (bmi >= 25 && bmi < 29.9) return "Overweight";
@@ -74,36 +73,38 @@ export default function Calculateing() {
           <Typography level="body-sm">Let's check yours BMI</Typography>
         </div>
         <FormControl>
-          <FormLabel>Height</FormLabel>
+          <FormLabel>Height in inches</FormLabel>
           <Input
             id="Height"
             name="Height"
             type="text"
             placeholder="Yours Height"
-            value={height}
-            onChange={e => setHeight(e.target.value)}
+            value={heightInches}
+            onChange={e => setHeightInches(e.target.value)}
           />
         </FormControl>
         <FormControl>
-          <FormLabel>weight</FormLabel>
+          <FormLabel>Weight in LBS</FormLabel>
           <Input
             id="Weight"
             name="Weight"
             type="text"
             placeholder="Weight"
-            value={weight}
-            onChange={e => setWeight(e.target.value)}
+            value={weightLbs}
+            onChange={e => setWeightLbs(e.target.value)}
           />
         </FormControl>
-        <Button onClick={CalculateBmi} sx={{ mt: 1 }}>Check it!</Button>
-          {bmiResult && (
+        <Button onClick={CalculateBmiAm} sx={{ mt: 1 }}>Check it!</Button>
+          {bmiResultAm && (
         <Typography>
-          {status}<br></br>
-          {bmiResult}<br></br>
+          {statusAm}<br></br>
+          {bmiResultAm}<br></br>
         </Typography>
 
         )}
+
       </Sheet>
+
     </main>
   );
 }
